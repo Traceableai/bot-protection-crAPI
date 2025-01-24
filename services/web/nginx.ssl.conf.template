@@ -69,6 +69,23 @@ server {
 
   location /static {
     try_files $uri $uri/ =404;
+    sub_filter_once off; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter_types application/javascript text/javascript; # Apply only for JS
+    add_header 'Access-Control-Allow-Origin' '*' always;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
+    add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With' always;
+    add_header 'Access-Control-Allow-Credentials' 'true' always;
+
+    # Handle preflight requests
+    if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT';
+        add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With';
+        add_header 'Access-Control-Max-Age' 1728000;
+        return 204;
+    }
   }
 
   location /.well-known/jwks.json {
@@ -107,6 +124,23 @@ server {
         set $fallback_file =404;
     }
     try_files $uri $uri/ $fallback_file =404;
+    sub_filter_once off; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter_types application/javascript text/javascript; # Apply only for JS
+    add_header 'Access-Control-Allow-Origin' '*' always;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
+    add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With' always;
+    add_header 'Access-Control-Allow-Credentials' 'true' always;
+
+    # Handle preflight requests
+    if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT';
+        add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With';
+        add_header 'Access-Control-Max-Age' 1728000;
+        return 204;
+    }
   }
 }
 
@@ -171,6 +205,23 @@ server {
 
   location /static {
     try_files $uri $uri/ =404;
+    sub_filter_once off; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter_types application/javascript text/javascript; # Apply only for JS
+    add_header 'Access-Control-Allow-Origin' '*' always;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
+    add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With' always;
+    add_header 'Access-Control-Allow-Credentials' 'true' always;
+
+    # Handle preflight requests
+    if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT';
+        add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With';
+        add_header 'Access-Control-Max-Age' 1728000;
+        return 204;
+    }
   }
 
   location /.well-known/jwks.json {
@@ -209,5 +260,18 @@ server {
     sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
     sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
     sub_filter_types application/javascript text/javascript; # Apply only for JS
+    add_header 'Access-Control-Allow-Origin' '*' always;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
+    add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With' always;
+    add_header 'Access-Control-Allow-Credentials' 'true' always;
+
+    # Handle preflight requests
+    if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT';
+        add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent, X-Requested-With';
+        add_header 'Access-Control-Max-Age' 1728000;
+        return 204;
+    }
   }
 }
