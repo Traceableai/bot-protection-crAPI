@@ -42,6 +42,10 @@ web:
     app: crapi-web
   serviceSelectorLabels:
     app: crapi-web
+  captcha:
+    url: https://captcha.traceable.ai
+    sitekeys: 
+      loginFlow: T-8784729
 
 identity:
   name: crapi-identity
