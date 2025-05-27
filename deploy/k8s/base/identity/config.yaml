@@ -27,3 +27,6 @@ data:
   JWT_EXPIRATION: "604800000"
   SMTP_STARTTLS: "true"
   SERVER_PORT: "8080"
+  TRACEABLE_CAPTCHA_SITE_KEY: "site-key"
+  TRACEABLE_CAPTCHA_API_KEY: "api-key"
+  TRACEABLE_CAPTCHA_VALIDATE_URL: "https://captcha.traceable.ai/api/v1/validate-token"

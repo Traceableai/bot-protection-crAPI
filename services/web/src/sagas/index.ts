@@ -20,19 +20,30 @@ import { profileActionWatcher } from "./profileSaga";
 import { communityActionWatcher } from "./communitySaga";
 import { vehicleActionWatcher } from "./vehicleSaga";
 import { mechanicActionWatcher } from "./mechanicSaga";
+import { crapienv } from "../config";
+import { APIService, requestURLS } from "../constants/APIConstant";
 
 // --- start traceable captcha ---
-const traceableCaptchaSiteKeyForLoginFlow = "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}";
-const traceableCaptchaUrl = "{{TRACEABLE_CAPTCHA_URL}}";
+const traceableCaptchaSiteKey = crapienv.TRACEABLE_CAPTCHA_SITE_KEY;
+const traceableCaptchaUrl = crapienv.TRACEABLE_CAPTCHA_URL;
+const traceableCaptchaTokenCallbackEnabled = crapienv.TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED;
+const traceableCaptchaValidateUrl = APIService.IDENTITY_SERVICE + requestURLS.TRACEABLE_CAPTCHA_VALIDATE_TOKEN;
 
-console.log('process.env:', process.env)
-console.log('TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW:', traceableCaptchaSiteKeyForLoginFlow);
+console.log('TRACEABLE_CAPTCHA_SITE_KEY:', traceableCaptchaSiteKey);
 console.log('TRACEABLE_CAPTCHA_URL:', traceableCaptchaUrl);
+console.log('TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED:', traceableCaptchaTokenCallbackEnabled);
+console.log('TRACEABLE_CAPTCHA_VALIDATE_URL:', traceableCaptchaValidateUrl);
+
+interface TokenObject {
+  token: string;
+  [key: string]: any; // Allow for additional properties
+}
 
 interface CaptchaConfig {
   sitekey: string;
   captchaContainer: string;
   disableContainer: string;
+  tokenCallback?: (tokenObj: TokenObject) => void;
 }
 
 declare global {
@@ -40,12 +51,34 @@ declare global {
     traceableCaptchaConfig: CaptchaConfig;
   }
 }
-window.traceableCaptchaConfig = {
+// Create base config
+let captchaConfig: CaptchaConfig = {
     // sitekey: "T-8784729",
-    sitekey: traceableCaptchaSiteKeyForLoginFlow,
+    sitekey: traceableCaptchaSiteKey,
     captchaContainer: "#basic",
     disableContainer: "#login-button-container"
 };
+
+// Add token callback if enabled
+if (traceableCaptchaTokenCallbackEnabled) {
+    captchaConfig = {
+        ...captchaConfig,
+        tokenCallback: function(tokenObj: TokenObject) {
+            fetch(traceableCaptchaValidateUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(tokenObj)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Token validation response:', data))
+            .catch(error => console.error('Error validating token:', error));
+        }
+    };
+}
+
+window.traceableCaptchaConfig = captchaConfig;
 console.log('traceableCaptchaConfig:', window.traceableCaptchaConfig);
 console.log("Loading traceable captcha v2..");
 document.addEventListener("DOMContentLoaded", function() {
