@@ -3,7 +3,7 @@ plugins {
   id("java")
   id("org.springframework.boot") version "3.2.2"
   id("io.spring.dependency-management") version "1.0.11.RELEASE"
-  id("com.diffplug.spotless") version "5.9.0"
+  id("com.diffplug.spotless") version "7.0.3"
 }
 
 group = "com.crapi"
@@ -26,7 +26,7 @@ pluginManager.withPlugin("java") {
     configure<com.diffplug.gradle.spotless.SpotlessExtension> {
         java {
             removeUnusedImports()
-            googleJavaFormat("1.7")
+            googleJavaFormat("1.17.0")
             indentWithSpaces(4)
             trimTrailingWhitespace()
             endWithNewline()
