@@ -49,7 +49,7 @@ services:
       - TLS_KEY_PASSWORD=passw0rd
       - TLS_KEY_ALIAS=identity
       - TRACEABLE_CAPTCHA_SITE_KEY=T-8784729
-      - TRACEABLE_CAPTCHA_API_KEY=api-key
+      - TRACEABLE_CAPTCHA_API_KEY=dev-secret
       - TRACEABLE_CAPTCHA_VALIDATE_URL=https://captcha.demo-dev.traceable.ai/api/v1/validate-token
     depends_on:
       postgresdb:

@@ -1,5 +1,6 @@
 package com.crapi.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,5 +15,7 @@ public class TraceableCaptchaResponse {
   private String message;
   private String timestamp;
   private String traceableSessionCookieString;
+
+  @JsonProperty("error-codes")
   private List<String> errorCodes;
 }
