@@ -32,13 +32,17 @@ public class GenerateVIN {
     random = new Random(seed);
   }
 
-  /** @return random generate pin code for add vehicle */
+  /**
+   * @return random generate pin code for add vehicle
+   */
   public String generatePincode() {
     pincode += getNum(3);
     return pincode;
   }
 
-  /** @return randomly generated VIN */
+  /**
+   * @return randomly generated VIN
+   */
   public String generateVIN() {
     StringBuilder vin = new StringBuilder();
     for (int i = 0; i < 17; i++) {

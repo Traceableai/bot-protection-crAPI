@@ -3,9 +3,15 @@ export const crapienv: {
   WORKSHOP_SERVICE: string;
   CHATBOT_SERVICE: string;
   COMMUNITY_SERVICE: string;
+  TRACEABLE_CAPTCHA_SITE_KEY: string;
+  TRACEABLE_CAPTCHA_URL: string;
+  TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED: string;
 } = {
   IDENTITY_SERVICE: "identity/",
   WORKSHOP_SERVICE: "workshop/",
   CHATBOT_SERVICE: "chatbot/",
   COMMUNITY_SERVICE: "community/",
+  TRACEABLE_CAPTCHA_SITE_KEY: "T-8784729",
+  TRACEABLE_CAPTCHA_URL: "https://captchax.traceable.ai",
+  TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED: "true"
 };

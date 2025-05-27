@@ -70,8 +70,9 @@ server {
   location /static {
     try_files $uri $uri/ =404;
     sub_filter_once off; 
-    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
-    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY}}" "$TRACEABLE_CAPTCHA_SITE_KEY";
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL";
+    sub_filter "{{TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED}}" "$TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED";
     sub_filter_types application/javascript text/javascript; # Apply only for JS
     add_header 'Access-Control-Allow-Origin' '*' always;
     add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
@@ -125,8 +126,9 @@ server {
     }
     try_files $uri $uri/ $fallback_file =404;
     sub_filter_once off; 
-    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
-    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY}}" "$TRACEABLE_CAPTCHA_SITE_KEY";
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL";
+    sub_filter "{{TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED}}" "$TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED";
     sub_filter_types application/javascript text/javascript; # Apply only for JS
     add_header 'Access-Control-Allow-Origin' '*' always;
     add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
@@ -206,8 +208,9 @@ server {
   location /static {
     try_files $uri $uri/ =404;
     sub_filter_once off; 
-    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
-    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY}}" "$TRACEABLE_CAPTCHA_SITE_KEY";
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL";
+    sub_filter "{{TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED}}" "$TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED";
     sub_filter_types application/javascript text/javascript; # Apply only for JS
     add_header 'Access-Control-Allow-Origin' '*' always;
     add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;
@@ -257,8 +260,9 @@ server {
     }
     try_files $uri $uri/ $fallback_file =404;
     sub_filter_once off; 
-    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW}}" "$TRACEABLE_CAPTCHA_SITE_KEY_FOR_LOGIN_FLOW"; 
-    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL"; 
+    sub_filter "{{TRACEABLE_CAPTCHA_SITE_KEY}}" "$TRACEABLE_CAPTCHA_SITE_KEY";
+    sub_filter "{{TRACEABLE_CAPTCHA_URL}}" "$TRACEABLE_CAPTCHA_URL";
+    sub_filter "{{TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED}}" "$TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED";
     sub_filter_types application/javascript text/javascript; # Apply only for JS
     add_header 'Access-Control-Allow-Origin' '*' always;
     add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, DELETE, PUT' always;

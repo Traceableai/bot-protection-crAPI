@@ -44,8 +44,8 @@ web:
     app: crapi-web
   captcha:
     url: https://captcha.traceable.ai
-    sitekeys: 
-      loginFlow: T-8784729
+    siteKey: T-8784729
+    tokenCallbackEnabled: false
 
 identity:
   name: crapi-identity
@@ -80,6 +80,10 @@ identity:
     keyStorePassword: passw0rd
     keyPassword: passw0rd
     keyAlias: identity
+    traceableCaptcha:
+      siteKey: "T-8784729"
+      apiKey: "dev-secret"
+      validateUrl: "https://captcha.demo-dev.traceable.ai/api/v1/validate-token"
   deploymentLabels:
     app: crapi-identity
   podLabels:

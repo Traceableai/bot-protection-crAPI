@@ -74,4 +74,5 @@ export const requestURLS: RequestURLSType = {
   ADD_COMMENT: "api/v2/community/posts/<postId>/comment",
   VALIDATE_COUPON: "api/v2/coupon/validate-coupon",
   VALIDATE_TOKEN: "api/auth/verify",
+  TRACEABLE_CAPTCHA_VALIDATE_TOKEN: "traceable/validate-token"
 };

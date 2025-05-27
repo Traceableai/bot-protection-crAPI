@@ -38,3 +38,6 @@ data:
   TLS_KEYSTORE_PASSWORD: {{ .Values.identity.config.keyStorePassword }}
   TLS_KEY_PASSWORD: {{ .Values.identity.config.keyPassword }}
   TLS_KEY_ALIAS: {{ .Values.identity.config.keyAlias }}
+  TRACEABLE_CAPTCHA_SITE_KEY: {{ .Values.traceableCaptcha.siteKey }}
+  TRACEABLE_CAPTCHA_API_KEY: {{ .Values.traceableCaptcha.apiKey }}
+  TRACEABLE_CAPTCHA_VALIDATE_URL: {{ .Values.traceableCaptcha.validateUrl }}
