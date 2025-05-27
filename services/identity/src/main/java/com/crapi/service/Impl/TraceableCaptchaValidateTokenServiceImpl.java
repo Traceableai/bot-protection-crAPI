@@ -61,6 +61,11 @@ public class TraceableCaptchaValidateTokenServiceImpl
       TraceableCaptchaResponse captchaResponse =
           objectMapper.readValue(response.getBody(), TraceableCaptchaResponse.class);
 
+      log.info("Traceable Captcha response: {}", captchaResponse);
+      if (!captchaResponse.isValid()) {
+        log.error("Traceable Captcha response is not valid: {}", captchaResponse);
+        return ResponseEntity.status(response.getStatusCode()).body(captchaResponse);
+      }
       // Create response headers
       HttpHeaders responseHeaders = new HttpHeaders();
       responseHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -83,8 +88,8 @@ public class TraceableCaptchaValidateTokenServiceImpl
     } catch (Exception e) {
       log.error("Error validating token: {}", e.getMessage(), e);
       TraceableCaptchaResponse errorResponse = new TraceableCaptchaResponse();
-      errorResponse.setSuccess(false);
-      errorResponse.setErrorMessage("Internal server error: " + e.getMessage());
+      errorResponse.setValid(false);
+      errorResponse.setMessage("Internal server error: " + e.getMessage());
       return ResponseEntity.internalServerError().body(errorResponse);
     }
   }

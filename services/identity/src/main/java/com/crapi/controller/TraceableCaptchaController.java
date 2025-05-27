@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @CrossOrigin
 @RestController
-@RequestMapping("/traceable")
+@RequestMapping("/identity/traceable")
 public class TraceableCaptchaController {
 
   @Autowired private TraceableCaptchaValidateTokenService validateTokenService;

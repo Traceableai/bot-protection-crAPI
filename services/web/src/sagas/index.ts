@@ -60,7 +60,7 @@ let captchaConfig: CaptchaConfig = {
 };
 
 // Add token callback if enabled
-if (traceableCaptchaTokenCallbackEnabled) {
+if (traceableCaptchaTokenCallbackEnabled === "true") {
     captchaConfig = {
         ...captchaConfig,
         tokenCallback: function(tokenObj: TokenObject) {

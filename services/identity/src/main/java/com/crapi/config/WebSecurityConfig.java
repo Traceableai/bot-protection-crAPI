@@ -84,6 +84,8 @@ public class WebSecurityConfig {
                     .permitAll()
                     .requestMatchers("/identity/api/v2/user/dashboard")
                     .permitAll()
+                    .requestMatchers("/identity/traceable/validate-token")
+                    .permitAll()
                     .requestMatchers("/identity/management/**")
                     .hasRole("ADMIN")
                     .anyRequest()

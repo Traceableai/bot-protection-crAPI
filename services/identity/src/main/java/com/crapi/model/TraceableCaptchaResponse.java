@@ -1,5 +1,6 @@
 package com.crapi.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TraceableCaptchaResponse {
-  private boolean success;
+  private boolean valid;
+  private String message;
+  private String timestamp;
   private String traceableSessionCookieString;
-  private String errorMessage;
-  // Add any other fields that might be returned by the Traceable API
+  private List<String> errorCodes;
 }
