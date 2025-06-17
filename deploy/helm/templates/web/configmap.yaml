@@ -11,6 +11,6 @@ data:
   WORKSHOP_SERVICE: {{ .Values.workshop.service.name }}:{{ .Values.workshop.port }}
   MAILHOG_WEB_SERVICE: {{ .Values.mailhog.webService.name }}:{{ .Values.mailhog.webPort }}
   TLS_ENABLED: {{ .Values.tlsEnabled | quote }}
-  TRACEABLE_CAPTCHA_URL: {{ .Values.captcha.url }}
-  TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED: {{ .Values.captcha.tokenCallbackEnabled | quote }}
-  TRACEABLE_CAPTCHA_SITE_KEY: {{ .Values.captcha.siteKey }}
+  TRACEABLE_CAPTCHA_URL: {{ .Values.web.captcha.url }}
+  TRACEABLE_CAPTCHA_TOKEN_CALLBACK_ENABLED: {{ .Values.web.captcha.tokenCallbackEnabled | quote }}
+  TRACEABLE_CAPTCHA_SITE_KEY: {{ .Values.web.captcha.siteKey }}
